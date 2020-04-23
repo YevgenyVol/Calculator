@@ -1,3 +1,4 @@
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.BeforeClass;
@@ -26,7 +27,7 @@ public class Main {
 
         capabilities.setCapability("unicodekeyboard", true);
         capabilities.setCapability("resetkeyboard", true);
-        URL url = new URL("http://127.0.0.1:4723/wd/hub/");
+        URL url = new URL("http://0.0.0.0:4723/wd/hub/");
 
         driver = new AndroidDriver(url, capabilities);
 //        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -36,7 +37,8 @@ public class Main {
     @Test
     public void testing(){
 
-//       WebElement three = driver.findElementById("com.android.calculator2:id/digit_3");
+//       WebElement three = driver.findElement(By.className("android.widget.Button"));
+        System.out.println("hello");
        WebElement three = driver.findElement(By.id("com.android.calculator2:id/digit_3"));
        three.click();
     }
