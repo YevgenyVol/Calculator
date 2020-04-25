@@ -1,6 +1,7 @@
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -37,10 +38,32 @@ public class Main {
     @Test
     public void testing(){
 
-//       WebElement three = driver.findElement(By.className("android.widget.Button"));
-        System.out.println("hello");
-       WebElement three = driver.findElement(By.id("com.android.calculator2:id/digit_3"));
-       three.click();
+
+
+        WebElement three = driver.findElement(By.id("com.android.calculator2:id/digit_3")); //button 3
+        three.click();
+        WebElement plusOp = driver.findElement(By.id("com.android.calculator2:id/op_add")); //button +
+        plusOp.click();
+        WebElement two = driver.findElement(By.id("com.android.calculator2:id/digit_2"));   //button 2
+        two.click();
+        WebElement equalOp = driver.findElement(By.id("com.android.calculator2:id/eq"));    //button =
+        equalOp.click();
+
+        String result = driver.findElement(By.id("com.android.calculator2:id/result")).getText(); //result
+
+
+        String expectedResult = "5";
+        try {
+            Assert.assertEquals(expectedResult,result);
+            System.out.println("result is true , " + result);
+        }
+        catch (AssertionError e)
+        {
+            System.out.println("wrong result , expected  " + expectedResult + " and actual is " + result);
+        }
+
+
+
     }
 
 
